@@ -10,7 +10,7 @@ final class MySQLi {
 
 			$this->connection = @new \mysqli($hostname, $username, $password, $database, $port);
 		} catch (\mysqli_sql_exception $e) {
-			throw new \Exception('Error: Could not make a database link using ' . $username . '@' . $hostname . '!');
+			die('Unable to connect to database');
 		}
 
 		$this->connection->set_charset("utf8");
@@ -40,7 +40,7 @@ final class MySQLi {
 				return true;
 			}
 		} else {
-			throw new \Exception('Error: ' . $this->connection->error  . '<br />Error No: ' . $this->connection->errno . '<br />' . $sql);
+			die('Unable to connect to database');
 		}
 	}
 
